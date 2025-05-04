@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { FormEvent, useState } from 'react';
 import { ProgressSpinner } from 'primereact/progressspinner';
-import axios from 'axios';
 
 import { apiTiendita } from '../../services/apiTiendita';
 
@@ -17,6 +16,7 @@ const Login = () => {
     const handlelogin = async (e: FormEvent) => {
         e.preventDefault();
 
+
         try {
             const response = await apiTiendita.post('user/login', {
                 username,
@@ -29,7 +29,14 @@ const Login = () => {
             localStorage.setItem('username', username)
 
             setTimeout(() => {
-                navigate('/home')
+                if (username) {
+                    const usuarioLogiado = localStorage.getItem('username') || '';
+                    if (usuarioLogiado === '') {
+                        navigate('/')
+                    } else {
+                        navigate('/home')
+                    }
+                }
             }, 3000);
         } catch (error: any) {
             if (error.response) {

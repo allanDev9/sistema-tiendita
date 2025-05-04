@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import type { ProductosType } from "../Interface/Types"
-import type { ThemeProps } from "../Interface/Props"
 import './style.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ProgressSpinner } from 'primereact/progressspinner';
+
+type ThemeProps = {
+    theme: boolean
+}
 
 const Productos = ({ theme }: ThemeProps) => {
     const navigate = useNavigate();
