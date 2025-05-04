@@ -56,12 +56,12 @@ const Login = () => {
                 <Box
                     className="flex flex-col text-white"
                     component="form"
-                    sx={{ '& > :not(style)': { m: 4, width: '25ch' } }}
+                    sx={{ m: 5, width: '25ch', gap: 4 }}
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField type='text' value={username} onChange={(e) => setUsername(e.target.value)} id="standard-basic" color='warning' label="Usuario" variant="standard" />
-                    <TextField type='password' value={password} onChange={(e) => setPassword(e.target.value)} id="standard-basic" color='warning' label="Contraseña" variant="standard" />
+                    <TextField type='text' value={username} onChange={(e) => setUsername(e.target.value)} id="standard-basic" color='success' label="Usuario" variant="standard" />
+                    <TextField className='mt-5' type='password' value={password} onChange={(e) => setPassword(e.target.value)} id="standard-basic" color='success' label="Contraseña" variant="standard" />
                 </Box>
                 <button type='submit' className='bg-black text-white p-3 rounded-xl w-50 font-bold cursor-pointer hover:bg-gray-800'>Iniciar</button>
                 {message && (
