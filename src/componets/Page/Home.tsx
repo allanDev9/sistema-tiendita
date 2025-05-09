@@ -27,11 +27,7 @@ const style = {
   p: 4,
 };
 
-type ThemeProps = {
-  theme: boolean;
-};
-
-export const Home = ({ theme }: ThemeProps) => {
+export const Home = () => {
   const UsersJSON = {
     name: "",
     username: "",
