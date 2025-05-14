@@ -3,8 +3,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { FormEvent, useEffect, useState } from "react";
 import { ProgressSpinner } from "primereact/progressspinner";
+import axios from "axios";
 
-import { apiTiendita } from "../../services/apiTiendita";
+//import { apiTiendita } from "../../services/apiTiendita";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,10 +20,13 @@ const Login = () => {
     useEffect(() => {
       const fetchUserLogin = async () => {
         try {
-          const response = await apiTiendita.post("user/login", {
-            username,
-            password,
-          });
+          const response = await axios.post(
+            "https://apitiendita-dyf6e6cdejdedya0.centralus-01.azurewebsites.net/api/user/login",
+            {
+              username,
+              password,
+            }
+          );
           setMessage(response.data.message);
           setMessageType("success");
           console.log("User", response.data.user);
