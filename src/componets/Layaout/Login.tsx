@@ -17,44 +17,38 @@ const Login = () => {
   const handlelogin = async (e: FormEvent) => {
     e.preventDefault();
 
-    useEffect(() => {
-      const fetchUserLogin = async () => {
-        try {
-          const response = await axios.post(
-            "https://apitiendita-dyf6e6cdejdedya0.centralus-01.azurewebsites.net/api/user/login",
-            {
-              username,
-              password,
-            }
-          );
-          setMessage(response.data.message);
-          setMessageType("success");
-          console.log("User", response.data.user);
-
-          localStorage.setItem("username", username);
-
-          setTimeout(() => {
-            if (username) {
-              const usuarioLogiado = localStorage.getItem("username") || "";
-              if (usuarioLogiado === "") {
-                navigate("/");
-              } else {
-                navigate("/home");
-              }
-            }
-          }, 3000);
-        } catch (error: any) {
-          if (error.response) {
-            setMessage(error.response.data.message);
-          } else {
-            setMessage("Error de conexión al servidor");
-          }
-          setMessageType("error");
+    try {
+      const response = await axios.post(
+        "https://apitiendita-dyf6e6cdejdedya0.centralus-01.azurewebsites.net/api/user/login",
+        {
+          username,
+          password,
         }
-      };
+      );
+      setMessage(response.data.message);
+      setMessageType("success");
+      console.log("User", response.data.user);
 
-      fetchUserLogin();
-    });
+      localStorage.setItem("username", username);
+
+      setTimeout(() => {
+        if (username) {
+          const usuarioLogiado = localStorage.getItem("username") || "";
+          if (usuarioLogiado === "") {
+            navigate("/");
+          } else {
+            navigate("/home");
+          }
+        }
+      }, 3000);
+    } catch (error: any) {
+      if (error.response) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage("Error de conexión al servidor");
+      }
+      setMessageType("error");
+    }
   };
 
   return (
