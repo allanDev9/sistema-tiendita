@@ -10,9 +10,8 @@ import Modal from "@mui/material/Modal";
 import AnuncioImg from "../../assets/Anuncio.png";
 import Prodcutos1Img from "../../assets/ProductosHome1.jpg";
 import Prodcutos2Img from "../../assets/ProductosHome2.webp";
-import axios from "axios";
 
-//import { apiTiendita } from "../../services/apiTiendita";
+import { apiTiendita } from "../../services/apiTiendita";
 
 const style = {
   position: "absolute",
@@ -42,9 +41,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          `https://apitiendita-dyf6e6cdejdedya0.centralus-01.azurewebsites.net/api/user/${username}`
-        );
+        const response = await apiTiendita.get(`user/${username}`);
         console.log("Usuarios recibidos:", response.data);
         setUser(response.data);
       } catch (error) {
