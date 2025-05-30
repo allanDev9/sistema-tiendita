@@ -4,7 +4,8 @@ import TextField from "@mui/material/TextField";
 import { FormEvent, useState } from "react";
 import { ProgressSpinner } from "primereact/progressspinner";
 
-import { apiTiendita } from "../../services/apiTiendita";
+import { LoginUseCase } from "../../../application/useCases/loginUseCase";
+import { UsuarioRepositoyImpl } from "../../../infrastructure/repositories/usuarioRepositoryImpl";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,16 +18,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await apiTiendita.post("user/login", {
-        username,
-        password,
-      });
-      setMessage(response.data.message);
+      const loginUseCase = new LoginUseCase(new UsuarioRepositoyImpl());
+      const usuario = await loginUseCase.execute(username, password);
+      setMessage(message);
       setMessageType("success");
-      console.log("User", response.data.user);
-
-      localStorage.setItem("username", username);
-
+      setMessage(`Bienvenido ${username}`);
       setTimeout(() => {
         if (username) {
           const usuarioLogiado = localStorage.getItem("username") || "";
@@ -38,8 +34,8 @@ const Login = () => {
         }
       }, 3000);
     } catch (error: any) {
-      if (error.response) {
-        setMessage(error.response.data.message);
+      if (error.message === "Unauthorized") {
+        setMessage(error);
       } else {
         setMessage("Error de conexión al servidor");
       }

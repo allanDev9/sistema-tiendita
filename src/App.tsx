@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./componets/Layaout/Login";
-import ProductosPage from "./componets/Page/ProductosPage";
-import { Home } from "./componets/Page/Home";
-import PrivateRoute from "./componets/PrivateRoute";
+import Login from "./presentation/components/Layaout/Login";
+import ProductosPage from "./presentation/components/Page/ProductosPage";
+import { Home } from "./presentation/components/Page/Home";
+import PrivateRoute from "./presentation/routes/PrivateRoute";
 
 function App() {
   return (

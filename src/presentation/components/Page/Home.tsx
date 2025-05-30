@@ -2,16 +2,17 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
-import "./style.css";
-import "./colors.css";
+import "../../../styled/styles-page-home.css";
+import "../../../styled/theme.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import CloseIcon from "@mui/icons-material/Close";
 
-import AnuncioImg from "../../assets/Anuncio.png";
-import Prodcutos1Img from "../../assets/ProductosHome1.jpg";
-import Prodcutos2Img from "../../assets/ProductosHome2.webp";
+import AnuncioImg from "../../../assets/Anuncio.png";
+import Prodcutos1Img from "../../../assets/ProductosHome1.jpg";
+import Prodcutos2Img from "../../../assets/ProductosHome2.webp";
 
-import { apiTiendita } from "../../services/apiTiendita";
+import { apiTiendita } from "../../../services/apiTiendita";
 
 const style = {
   position: "absolute",
@@ -139,12 +140,17 @@ export const Home = () => {
         <div>
           <Modal
             open={open}
-            onClose={handleCloseModal}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
               <section id="modal-modal-title" style={{ color: "white" }}>
+                <div className="flex flex-row relative left-77 bottom-3 bg-red-700 w-6 hover:bg-red-600">
+                  <CloseIcon
+                    className="cursor-pointer"
+                    onClick={handleCloseModal}
+                  />
+                </div>
                 <h1 className="text-yellow-300 font-bold">Datos del Usuario</h1>
               </section>
               <div className="border-1 border-b-white mt-5"></div>

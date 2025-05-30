@@ -1,0 +1,34 @@
+.diseño-scroll::-webkit-scrollbar {
+  width: 10px;
+  /* Ancho de la barra de desplazamiento */
+}
+
+.diseño-scroll::-webkit-scrollbar-track {
+  background: #3a3a3a;
+  /* Color del fondo de la pista */
+  border-radius: 10px;
+  /* Bordes redondeados de la pista */
+}
+
+.diseño-scroll::-webkit-scrollbar-thumb {
+  background: #ffcc00;
+  /* Color del pulgar (scrollbar) */
+  border-radius: 10px;
+  /* Bordes redondeados del pulgar */
+  border: 2px solid #3a3a3a;
+  /* Bordes alrededor del pulgar */
+}
+
+/* Estilo para el pulgar al pasar el mouse */
+.diseño-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ffdb33;
+  /* Color del pulgar al pasar el mouse */
+}
+
+/* Para Firefox */
+.diseño-scroll {
+  scrollbar-width: thin;
+  /* Estilo de scrollbar */
+  scrollbar-color: #ffcc00 #3a3a3a;
+  /* Color del pulgar y de la pista */
+}
